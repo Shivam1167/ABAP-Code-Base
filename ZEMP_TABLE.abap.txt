@@ -1,0 +1,17 @@
+@AbapCatalog.sqlViewName: 'ZDDIC_VIEW_100'
+@AbapCatalog.compiler.compareFilter: true
+//@AbapCatalog.preserveKey: true
+@AccessControl.authorizationCheck: #NOT_REQUIRED
+@EndUserText.label: 'Employee Table'
+@Metadata.ignorePropagatedAnnotations: true
+define view ZCDS_EMP_TABLE1
+as select from mara
+{
+    key matnr as MATERIAL_NUMBER,
+        case mtart
+        when 'ROH' then 'Raw Materials'
+        else 'Other Material Type' end as MATERIAL_TYPE,
+        mbrsh as INDUSTRY_SECTOR,
+        matkl as MATERIAL_GROUP,
+        meins as UNIT_OF_MEASURE
+}
